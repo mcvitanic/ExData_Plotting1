@@ -11,16 +11,14 @@ subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
 
 # plot2 specific code:
 
+datetime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
 globalActivePower <- as.numeric(subSetData$Global_active_power)
 
-# put output into "plot1.png" file
-png("plot1.png", width=480, height=480)
+# put output into "plot2.png" file
+png("plot2.png", width=480, height=480)
 
-# make a histogram
-#    name should be "Global Active Power",
-#    color should be red,
-#    label on x axis should be "Global Active Power (kilowatts)"
-hist(globalActivePower, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+# make a graph with y axis label "Global Active Power (kilowatts)"
+plot(datetime, globalActivePower, type="l", xlab="", ylab="Global Active Power (kilowatts)")
 
 # close the file
 dev.off()
